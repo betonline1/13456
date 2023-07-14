@@ -55,27 +55,8 @@ if (window.location.href.indexOf("replayGame.do") != -1)
 	{
 		step = "PLAYING";
 		lastStep = "PLAYING"
-	}
-
-	ga('LoadingTracker.send', 'event', "uht_loading", "_CLOSED_error_" + step, URLGameSymbol, UHT_HAD_ERRORS?1:0);
- 
-	if (LoadingStep > 1)
-		globalTracking.StopTimerAndSend("uht_loading", "_CLOSED_at_" + lastStep, "LoadingTracker");
- 	else
-		if (GA_timer_load_start != undefined)
-			ga('LoadingTracker.send', 'timer', "uht_loading", "_CLOSED_at_1", URLGameSymbol, new Date().getTime() - GA_timer_load_start);
-
-	UHT_SEND_ERRORS = false;
-
-	if (SendTrackingIfQueued != undefined)
-	{
-		SendTrackingIfQueued();
-		SendTrackingIfQueued();
-		SendTrackingIfQueued();
-		SendTrackingIfQueued();
-	}
 	
-	return;
+	
  }
  
  
@@ -116,20 +97,7 @@ function ga4_init( ua_id, ua_params, ga4_id)
 	}
 }
 
-ga4_init('UA-83294317-2', {'siteSpeedSampleRate':  10, 'sampleRate':   5, name: "RatingTracker"}, 'G-X4NZ7202MD');
-ga4_init('UA-83294317-3', {'siteSpeedSampleRate':  10, 'sampleRate':   1, name: "LoadingTracker"}, 'G-18F57V2EP0');
-ga4_init('UA-83294317-4', {'siteSpeedSampleRate':  10, 'sampleRate':   1, name: "SpinTracker"}, 'G-R0S1TGV01J');
-ga4_init('UA-83294317-5', {'siteSpeedSampleRate':  10, 'sampleRate': 100, name: "ServerErrorsTracker"}, 'G-6G1F81S55L');
-ga4_init('UA-83294317-6', {'siteSpeedSampleRate':  10, 'sampleRate':   5, name: "BehaviourTracker"}, 'G-ZLLL6ZSBLR');
 
-ga('LoadingTracker.send', 'event', "uht_loading", "_0_game_icon_clicked", URLGameSymbol, 1);
-window["gtag"]("event", "_0_game_icon_clicked",
-                {
-                    'send_to':window['gaMapping']['LoadingTracker'],
-                    'event_category': "uht_loading",
-                    'event_label': URLGameSymbol,
-                    'value': 1
-                });
 
 
 function sendGAQueued ()
